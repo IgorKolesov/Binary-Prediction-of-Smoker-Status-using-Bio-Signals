@@ -89,19 +89,27 @@ if __name__ == '__main__':
 
     # Some information about data
     # We can see that there are no Nullable values
-    # All columns have correct type
     print(data.info())
 
-    # Let's take a look at the distribution plot and boxplot of the features.
+    # Something strange in hearing
+    # It must be categorical, not float
     for col in columns_list:
-        plt.subplots(2, 2)
-        plt.subplots_adjust(hspace=0.5, wspace=0.5)
+        print('-'*20)
+        print(data[col].describe())
 
-        plot_hist(data[col], is_subplot=True, subplot_indexes=[2, 2, 1])
-        plot_boxplot(data[col], is_subplot=True, subplot_indexes=[2, 2, 2])
-        plot_kde(data[col], is_subplot=True, subplot_indexes=[2, 2, 3])
-        add_info_to_plot(data[col].describe(), is_subplot=True, subplot_indexes=[2, 2, 4])
+    print(data['hearing(left)'].value_counts())
+    print(data['hearing(right)'].value_counts())
 
-        plt.savefig(f'./graphics/{col}.png')
-        plt.close()
+    # Let's take a look at the distribution plot and boxplot of the features.
+    # for col in columns_list:
+    #     plt.subplots(2, 2)
+    #     plt.subplots_adjust(hspace=0.5, wspace=0.5)
+    #
+    #     plot_hist(data[col], is_subplot=True, subplot_indexes=[2, 2, 1])
+    #     plot_boxplot(data[col], is_subplot=True, subplot_indexes=[2, 2, 2])
+    #     plot_kde(data[col], is_subplot=True, subplot_indexes=[2, 2, 3])
+    #     add_info_to_plot(data[col].describe(), is_subplot=True, subplot_indexes=[2, 2, 4])
+    #
+    #     plt.savefig(f'./graphics/{col}.png')
+    #     plt.close()
 
