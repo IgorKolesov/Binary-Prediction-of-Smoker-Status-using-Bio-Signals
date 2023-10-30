@@ -35,33 +35,12 @@ if __name__ == '__main__':
 
             data = data[(data[col] >= lower_bound) & (data[col] <= upper_bound)]
 
-    loss_functions_classification = [
-        'Logloss',
-        'CrossEntropy',
-        'MultiClass',
-        'MultiClassOneVsAll',
-    ]
-    float_range = np.arange(0.01, 0.21, 0.05)
-    history = []
     X_train, X_test, y_train, y_test = train_test_split(data[cols], data[target], test_size=0.2, random_state=42)
 
-    for depth in range(1, 5):
-        for lr in float_range:
-            for loss in loss_functions_classification:
-                model = CatBoostClassifier(iterations=100, depth=depth, learning_rate=lr, loss_function=loss,
-                                           verbose=False)
-                model.fit(X_train, y_train, cat_features=cat_cols)
-
-                y_pred = model.predict(X_test)
-                roc_auc = roc_auc_score(y_test, y_pred)
-                print(depth, lr, loss, roc_auc)
-                history.append([depth, lr, loss, roc_auc])
-
-    print(max(history, key=lambda x: x[3]))
-
-    # [4, 0.16000000000000003, 'Logloss', 0.7812274348695105]
-    model = CatBoostClassifier(iterations=100, depth=4, learning_rate=0.16, loss_function='Logloss', verbose=False)
+    model = CatBoostClassifier(iterations=1000, depth=8, learning_rate=0.05, l2_leaf_reg=5, eval_metric='AUC', verbose=False)
     model.fit(data[cols], data[target], cat_features=cat_cols)
+
+    y_pred = model.predict(X_test)
 
     test = pd.read_csv('../../dataset/test.csv')
 
@@ -71,5 +50,5 @@ if __name__ == '__main__':
 
     submission = pd.read_csv('../../dataset/sample_submission.csv')
 
-    submission['smoking'] = model.predict(test[cols])
-    submission.to_csv('./catboost.csv', index=False)
+    submission['smoking'] = model.predict_proba(test[cols])
+    submission.to_csv('./catboost_best_proba.csv', index=False)
