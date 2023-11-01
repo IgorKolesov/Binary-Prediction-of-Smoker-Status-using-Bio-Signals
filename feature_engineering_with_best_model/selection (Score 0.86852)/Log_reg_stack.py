@@ -20,9 +20,9 @@ if __name__ == '__main__':
     correlation_matrix = X.corr()
 
     plt.figure(figsize=(12, 10))
-    sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', fmt=".2f")
+    sns.heatmap(correlation_matrix, annot=False, cmap='coolwarm', fmt=".2f")
     plt.title('Correlation matrix')
-    plt.savefig(f'./correlation.png')
+    plt.savefig(f'./correlation_without_digits.png')
 
     X = X.drop([
         'weight(kg)',
