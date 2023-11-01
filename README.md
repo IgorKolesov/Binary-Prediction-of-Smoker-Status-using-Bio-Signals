@@ -171,7 +171,7 @@ print(best_parameters)
 <p>As we can observe, boosting methods perform significantly better than decision tree, random forests, and linear regression. However, stacking all these models enables us to make predictions even slightly more accurately.</p>
 
 <h3>Feature engineering and feature selection</h3>
-<p>I attempted to add new features to the original dataset. These features incorporated various relationships between attributes that have real-life and medical applications. This features are:</p>
+<p>I attempted to <a href="/feature_engineering_with_best_model/engineering">add new features</a> to the original dataset. These features incorporated various relationships between attributes that have real-life and medical applications. This features are:</p>
 
 ```python
 def new_features(df: pd.DataFrame):
@@ -185,7 +185,7 @@ def new_features(df: pd.DataFrame):
     df['Liver_function'] = df['AST'] + df['ALT'] + df['Gtp']
 ```
 
-<p>Then I plot a correlation matrix and removed non-target features with high correlation among themselves, as well as features that had approximately zero correlation with the target variable. This features are:</p>
+<p>Then I <a href="/feature_engineering_with_best_model/selection (Score 0.86852)">plot a correlation matrix</a> and removed non-target features with high correlation among themselves, as well as features that had approximately zero correlation with the target variable. This features are:</p>
 
 <img src="/feature_engineering_with_best_model/selection (Score 0.86852)/correlation_without_digits.png">
 
