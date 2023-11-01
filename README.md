@@ -62,7 +62,7 @@
   <li>min_samples_split = 5</li>
 </ul>
   </li>
-  <li><a href="/models/Random_forest">Random Forest</a>. Used params:
+  <li><a href="models/Random_forest">Random Forest</a>. Used params:
       <ul>
   <li>max_features = 'sqrt'</li>
   <li>min_impurity_decrease = 0.001</li>
@@ -92,7 +92,7 @@
   <li>eval_metric = 'AUC'</li>
 </ul>
   </li>
-  <li><a href="">XGBoost</a>. Used params:
+  <li><a href="models/XGBoost">XGBoost</a>. Used params:
       <ul>
   <li>learning_rate = 0.05</li>
   <li>max_depth = 6</li>
@@ -161,10 +161,10 @@ print(best_parameters)
 <ul>
   <li><a href="models/Log_regression">Logistic Regression with data scaller</a>. Score = 0.83827</li>
   <li><a href="models/Decision_tree">Decision Tree</a>. Score = 0.8277</li>
-  <li><a href="/models/Random_forest">Random Forest</a>. Score = 0.82973</li>
+  <li><a href="models/Random_forest">Random Forest</a>. Score = 0.82973</li>
   <li><a href="models/Gradient_boosting">Gradient Boosting</a>. Score = 0.86394</li>
   <li><a href="models/Catboost">Catboost</a>. Score = 0.87007</li>
-  <li><a href="">XGBoost</a>. Score = 0.87158</li>
+  <li><a href="models/XGBoost">XGBoost</a>. Score = 0.87158</li>
   <li><a href="models/Ensambles">Ensemble of multiple models (stacking)</a>. Score = 0.87209</li>
 </ul>
 
